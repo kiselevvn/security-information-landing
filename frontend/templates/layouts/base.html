@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="template-color-1">
+  <div class="main-wrapper h-screen">
+    {% comment %} {% include 'components/loading.html' %} {% endcomment %}
+    {% comment %} {% include 'components/header.html' %} {% endcomment %}
+    {% block body %}
+      Use body django block
+    {% endblock %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </div>
+</body>
+</html>
