@@ -20,10 +20,10 @@ class News(models.Model):
         verbose_name=_("Содержание новости"), blank=True, null=True
     )
     is_published = models.BooleanField(
-        verbose_name=_("Новость опубликована"), default=False
+        verbose_name=_("Опубликовано"), default=False
     )
     is_published_landing = models.BooleanField(
-        verbose_name=_("Новость опубликована на главной странице"),
+        verbose_name=_("Опубликовано на главной странице"),
         default=False,
     )
     category_news = models.ForeignKey(

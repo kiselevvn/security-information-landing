@@ -14,7 +14,7 @@ class CategoryNews(models.Model):
         verbose_name=_("Краткое описание"), blank=True, null=True
     )
     is_published = models.BooleanField(
-        verbose_name=_("Новость опубликована"), default=False
+        verbose_name=_("Категория опубликована"), default=False
     )
     date_created = models.DateTimeField(verbose_name=_("Дата создания"),auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_("Дата последнего обновления"),auto_now=True)
