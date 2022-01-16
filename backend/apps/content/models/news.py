@@ -11,7 +11,7 @@ class News(models.Model):
         verbose_name=_("Картинка"), blank=True, null=True
     )
     title = models.CharField(
-        verbose_name=_("Заголовок"), max_length=255, blank=True, null=True
+        verbose_name=_("Заголовок"), max_length=255, null=True
     )
     description = models.TextField(
         verbose_name=_("Краткое описание"), blank=True, null=True
@@ -26,7 +26,15 @@ class News(models.Model):
         verbose_name=_("Новость опубликована на главной странице"),
         default=False,
     )
-    date_created = models.DateTimeField(verbose_name=_("Дата создания"),auto_now_add=True)
+    category_news = models.ForeignKey(
+        'content.CategoryNews',
+        verbose_name=_("Категория новости"),
+        related_name='news',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+    date_created = models.DateTimeField(verbose_name=_("Дата создания"), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_("Дата последнего обновления"),auto_now=True)
 
     class Meta:
@@ -35,7 +43,7 @@ class News(models.Model):
         ordering = ["-date_created"]
 
     def __str__(self):
-        title = "???" if self.title is None else self.title
+        title = "Без заголовка" if self.title is None else self.title
         return (
             f"'{title}' "
             + f"(дата создания: {self.date_created}, "
