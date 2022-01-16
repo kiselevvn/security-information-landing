@@ -34,13 +34,14 @@ class News(models.Model):
         blank=True,
         null=True,
     )
+    date = models.DateTimeField(verbose_name=_("Дата новости"),blank=True,null=True)
     date_created = models.DateTimeField(verbose_name=_("Дата создания"), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_("Дата последнего обновления"),auto_now=True)
 
     class Meta:
         verbose_name = _("Новость")
         verbose_name_plural = _("Новости")
-        ordering = ["-date_created"]
+        ordering = ["-date"]
 
     def __str__(self):
         title = "Без заголовка" if self.title is None else self.title

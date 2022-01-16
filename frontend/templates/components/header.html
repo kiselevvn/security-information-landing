@@ -1,6 +1,6 @@
 {% load static extra_settings %}
 
-<header class="fixed w-screen text-gray-600 body-font bg-purple-800/75">
+<header class="fixed w-screen text-gray-600 body-font bg-purple-800/75 z-50">
   <div class="container  mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <a class="hidden md:flex  title-font font-medium items-center text-white mb-4 md:mb-0">
       <span class="ml-3 text-xl">Protected</span>
@@ -9,8 +9,9 @@
       <a href="/" class="mx-2 text-white">Главная</a>
       <a href="{% if request.path != "/" %}/{% endif%}#services" class="mx-2 text-white">Услуги</a>
       <a href="{% if request.path != "/" %}/{% endif%}#news" class="mx-2 text-white">Новости</a>
-      <a class="mx-2 text-white">Вопрос ответ</a>
+      {% comment %} <a class="mx-2 text-white">Вопрос ответ</a> {% endcomment %}
       <a href="{% if request.path != "/" %}/{% endif%}#comments" class="mx-2 text-white">Отзывы</a>
+      <a href="{% if request.path != "/" %}/{% endif%}#contacts" class="mx-2 text-white">Контакты</a>
     </nav>
   </div>
 </header>

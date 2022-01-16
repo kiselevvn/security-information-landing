@@ -1,5 +1,5 @@
 {% extends "layouts/landing-layout.html" %}
-{% load static %}
+{% load static extra_settings  %}
 
 {% block content  %}
 
@@ -10,9 +10,11 @@
       </div>
       <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
         <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-          Информационная безопасность организации
+          {% get_setting 'TITLE' default='Информационная безопасность организации' %}
         </h1>
-        <p class="mb-8 leading-relaxed">Защита персональных данных, конфиденциальной информации, а также обеспечение непрерывности бизнеса. Уникальный опыт в области защиты информации, возможность решать нестандартные и масштабные задачи.</p>
+        <p class="mb-8 leading-relaxed">
+          {% get_setting 'SUBTITLE' default='Защита персональных данных, конфиденциальной информации, а также обеспечение непрерывности бизнеса. Уникальный опыт в области защиты информации, возможность решать нестандартные и масштабные задачи.' %}
+        </p>
         <div class="flex justify-center">
           <a href="#services" class="inline-flex text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-lg">Услуги</a>
         </div>
@@ -28,7 +30,7 @@
       <h2 class="text-4xl font-medium title-font text-gray-900">Список новостей</h2>
       <h2 class="text-xs text-purple-500 tracking-widest font-medium title-font mb-1">Актуальная информация о событиях компании</h2>
     </div>
-    <div class="flex flex-wrap -m-4">
+    {% comment %} <div class="flex flex-wrap -m-4">
       {% for news_object in news %}
       <div class="p-4 md:w-1/2 lg:w-1/3 ">
         <div class="flex rounded-lg h-full p-8 flex-col border-2 border-purple-400">
@@ -48,6 +50,32 @@
         </div>
       </div>
       {% endfor %}
+    </div> {% endcomment %}
+    <div class="container px-5 pb-10 mx-auto">
+      <div class="flex flex-wrap -mx-4 -my-8">
+        {% for news_object in news %}
+        <a href="{% url 'news-detail' news_object.pk %}" class="py-8 px-4 lg:w-1/3">
+          <div class="h-full flex items-start">
+            <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
+              <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">
+                {{ news_object.date|date:"N" }}
+                <br>
+                {{ news_object.date|date:"Y" }}
+              </span>
+              <span class="font-medium text-lg text-gray-800 title-font leading-none">{{ news_object.date|date:"d" }}</span>
+            </div>
+            <div class="flex-grow pl-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 mb-1">{{ news_object.category_news.name }}</h2>
+              <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ news_object.title }}</h1>
+              <p class="leading-relaxed mb-5">
+                {{ news_object.description }}
+              </p>
+
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
     </div>
     <div class="flex justify-center w-full my-10">
       <a href="{% url 'news-list' %}" class="inline-flex text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded text-lg">Все новости</a>
@@ -55,6 +83,7 @@
   </div>
 </section>
 {% endif %}
+
 
 {% if category_service %}
 <section id="services" class="text-gray-600 body-font">
@@ -114,6 +143,29 @@
   </div>
 </section>
 {% endif %}
+
+
+<section id="contacts" class="text-gray-600 body-font relative">
+  <div class="h-screen container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap flex-col">
+    <h2 class="text-4xl font-medium title-font text-gray-900 mb-12 text-center">Контакты</h2>
+
+    <div class="w-full h-screen bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+      <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="{% get_setting 'MAP' default='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173294.91503528442!2d39.48791672749869!3d47.26092314360029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3c777c3b4b6ef%3A0x8248b451e48b4d04!2z0KDQvtGB0YLQvtCyLdC90LAt0JTQvtC90YMsINCg0L7RgdGC0L7QstGB0LrQsNGPINC-0LHQuy4!5e0!3m2!1sru!2sru!4v1642355297597!5m2!1sru!2sru' %}" ></iframe>
+      <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+        <div class="lg:w-1/2 px-6">
+          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">Адрес</h2>
+          <p class="mt-1">{% get_setting 'ADDRESS' default='г. Ростов-на-Дону, улица Пушкина, дом №729 подъезд №2' %}</p>
+        </div>
+        <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
+          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">Электронная почта</h2>
+          <a class="text-indigo-500 leading-relaxed">{% get_setting 'EMAIL' default='protectedmanager@test.com' %}</a>
+          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">Телефон</h2>
+          <p class="leading-relaxed">{% get_setting 'PHONE' default='+7(999) 555-33-33' %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 {% endblock %}

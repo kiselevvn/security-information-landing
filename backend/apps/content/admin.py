@@ -11,7 +11,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = (
         "title",
         "category_news",
-        "date_created",
+        "date",
         "is_published",
         "is_published_landing",
     )
@@ -37,18 +37,18 @@ class CategoryNewsAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(QuestionAnswer)
-class QuestionAnswerAdmin(admin.ModelAdmin):
-    """
-    Вопрос ответ в админке
-    """
+# @admin.register(QuestionAnswer)
+# class QuestionAnswerAdmin(admin.ModelAdmin):
+#     """
+#     Вопрос ответ в админке
+#     """
 
-    list_display = (
-        "question",
-        "date_updated",
-        "date_created",
-    )
-    list_filter = ("date_created",)
+#     list_display = (
+#         "question",
+#         "date_updated",
+#         "date_created",
+#     )
+#     list_filter = ("date_created",)
 
 
 @admin.register(Comment)
