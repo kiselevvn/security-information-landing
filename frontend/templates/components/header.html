@@ -1,11 +1,11 @@
 {% load static extra_settings %}
 
-<header class="fixed w-screen text-gray-600 body-font bg-purple-800/75">
+<header class="fixed w-screen text-white body-font bg-green-900/75 ">
   <div class="container  mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
     <a class="hidden md:flex  title-font font-medium items-center text-white mb-4 md:mb-0">
       <span class="ml-3 text-xl">Protected</span>
     </a>
-    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+    <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-white-400	flex flex-wrap items-center text-base justify-center">
       <a href="/" class="mx-2 text-white">Главная</a>
       <a href="{% if request.path != "/" %}/{% endif%}#services" class="mx-2 text-white">Услуги</a>
       <a href="{% if request.path != "/" %}/{% endif%}#news" class="mx-2 text-white">Новости</a>
