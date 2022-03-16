@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, QuestionAnswer, Comment, Service, CategoryService
+from .models import News, QuestionAnswer, Comment, Service, CategoryService, CategoryNews
 
 
 @admin.register(News)
@@ -10,8 +10,8 @@ class NewsAdmin(admin.ModelAdmin):
 
     list_display = (
         "title",
-        "date_updated",
-        "date_created",
+        "category_news",
+        "date",
         "is_published",
         "is_published_landing",
     )
@@ -21,18 +21,34 @@ class NewsAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(QuestionAnswer)
-class QuestionAnswerAdmin(admin.ModelAdmin):
+@admin.register(CategoryNews)
+class CategoryNewsAdmin(admin.ModelAdmin):
     """
-    Вопрос ответ в админке
+    Новость в админке
     """
 
     list_display = (
-        "question",
-        "date_updated",
+        "name",
         "date_created",
+        "is_published",
     )
-    list_filter = ("date_created",)
+    list_filter = (
+        "is_published",
+    )
+
+
+# @admin.register(QuestionAnswer)
+# class QuestionAnswerAdmin(admin.ModelAdmin):
+#     """
+#     Вопрос ответ в админке
+#     """
+
+#     list_display = (
+#         "question",
+#         "date_updated",
+#         "date_created",
+#     )
+#     list_filter = ("date_created",)
 
 
 @admin.register(Comment)

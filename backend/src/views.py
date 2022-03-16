@@ -14,7 +14,7 @@ class LandingView(TemplateView):
         Контекст данных лэндинга
         """
         data = super().get_context_data(**kwargs)
-        data["category_service"] = CategoryService.objects.all()
-        data["news"] = News.objects.filter(is_published_landing=True,is_published=True)
-        data["comments"] = Comment.objects.all()
+        data["category_service"] = CategoryService.objects.filter(is_published=True)
+        data["news"] = News.objects.filter(is_published_landing=True,)
+        data["comments"] = Comment.objects.filter(is_published_landing=True)
         return data

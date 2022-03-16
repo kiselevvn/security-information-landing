@@ -9,8 +9,9 @@
       <a href="/" class="mx-2 text-white">Главная</a>
       <a href="{% if request.path != "/" %}/{% endif%}#services" class="mx-2 text-white">Услуги</a>
       <a href="{% if request.path != "/" %}/{% endif%}#news" class="mx-2 text-white">Новости</a>
-      <a class="mx-2 text-white">Вопрос ответ</a>
+      {% comment %} <a class="mx-2 text-white">Вопрос ответ</a> {% endcomment %}
       <a href="{% if request.path != "/" %}/{% endif%}#comments" class="mx-2 text-white">Отзывы</a>
+      <a href="{% if request.path != "/" %}/{% endif%}#contacts" class="mx-2 text-white">Контакты</a>
     </nav>
   </div>
 </header>

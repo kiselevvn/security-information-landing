@@ -29,6 +29,3 @@ class QuestionAnswer(
             + f"(дата создания: {self.date_created}, "
             + f"дата последнего редактирования: {self.date_updated})"
         )
-
-    # def get_absolute_url(self):
-    #     return reverse("News_detail", kwargs={"pk": self.pk})
