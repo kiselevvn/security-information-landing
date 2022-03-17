@@ -30,50 +30,26 @@
       <h2 class="text-4xl font-medium title-font text-white">Список новостей</h2>
       <h2 class="text-xs text-green-500 tracking-widest font-medium title-font mb-1">Актуальная информация о событиях компании</h2>
     </div>
-    {% comment %} <div class="flex flex-wrap -m-4">
-      {% for news_object in news %}
-      <div class="p-4 md:w-1/2 lg:w-1/3 ">
-        <div class="flex rounded-lg h-full p-8 flex-col bg-slate-600">
-          <div class="flex items-center mb-3">
-            <h2 class="text-white text-lg title-font font-medium">{{ news_object.title }}</h2>
-          </div>
-
-          <div class="flex flex-col">
-            <p class="leading-relaxed text-base">{{ news_object.description }}</p>
-            <span class="text-white-400">{{ news_object.date_created|date:"d E Y" }}</span>
-            <a href="{% url 'news-detail' news_object.pk %}" class="mt-3 text-green-500 inline-flex items-center">Открыть
-              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-    </div> {% endcomment %}
     <div class="container px-5 pb-10 mx-auto">
       <div class="flex flex-wrap -mx-4 -my-8">
         {% for news_object in news %}
-        <a  data-aos="zoom-in-up" href="{% url 'news-detail' news_object.pk %}" class="py-8 px-4 lg:w-1/3">
-          <div class="h-full flex items-start">
-            <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
-              <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">
-                {{ news_object.date|date:"N" }}
-                <br>
-                {{ news_object.date|date:"Y" }}
-              </span>
-              <span class="font-medium text-lg text-gray-800 title-font leading-none">{{ news_object.date|date:"d" }}</span>
+        <div class="p-4 md:w-1/2 lg:w-1/3 ">
+          <div class="flex rounded-lg h-full p-8 flex-col  bg-slate-600">
+            <div class="flex items-center mb-3">
+              <h2 class="text-white text-lg title-font font-medium">{{ news_object.title }}</h2>
             </div>
-            <div class="flex-grow pl-6">
-              <h2 class="tracking-widest text-xs title-font font-medium text-indigo-500 mb-1">{{ news_object.category_news.name }}</h2>
-              <h1 class="title-font text-xl font-medium text-gray-900 mb-3">{{ news_object.title }}</h1>
-              <p class="leading-relaxed mb-5">
-                {{ news_object.description }}
-              </p>
 
+            <div class="flex flex-col">
+              <p class="leading-relaxed text-base">{{ news_object.description }}</p>
+              <span class="text-white-400">{{ news_object.date_created|date:"d E Y" }}</span>
+              <a href="{% url 'news-detail' news_object.pk %}" class="mt-3 text-green-500 inline-flex items-center">Открыть
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+              </a>
             </div>
           </div>
-        </a>
+        </div>
         {% endfor %}
       </div>
     </div>
@@ -129,10 +105,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="block w-5 h-5 mb-4" viewBox="0 0 975.036 975.036">
               <path d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z"></path>
             </svg>
-            <p class="leading-relaxed mb-6">{{comment.text}}</p>
+            <p class="leading-relaxed mb-6 text-white">{{comment.text}}</p>
             <a class="inline-flex items-center">
               <span class="flex-grow flex flex-col pl-4">
-                <span class="title-font font-medium">{{comment.name}}</span>
+                <span class="title-font font-medium text-white">{{comment.name}}</span>
               </span>
             </a>
           </div>
@@ -145,21 +121,21 @@
 {% endif %}
 
 
-<section id="contacts" class="text-gray-600 body-font">
+<section id="contacts" class="text-white body-font">
   <div class="container px-5 py-24 mx-auto flex flex-col">
-    <h2  data-aos="zoom-in" class="text-4xl font-medium title-font text-gray-900 mb-12 text-center">Контакты</h2>
+    <h2  data-aos="zoom-in" class="text-4xl font-medium title-font text-white mb-12 text-center">Контакты</h2>
 
-    <div data-aos="zoom-in-up" style="min-height:500px;" class="w-full h-screen bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+    <div data-aos="zoom-in-up" style="min-height:500px;" class="w-full h-screen  rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
       <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="{% get_setting 'MAP' default='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d173294.91503528442!2d39.48791672749869!3d47.26092314360029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3c777c3b4b6ef%3A0x8248b451e48b4d04!2z0KDQvtGB0YLQvtCyLdC90LAt0JTQvtC90YMsINCg0L7RgdGC0L7QstGB0LrQsNGPINC-0LHQuy4!5e0!3m2!1sru!2sru!4v1642355297597!5m2!1sru!2sru' %}" ></iframe>
-      <div class="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+      <div class="bg-slate-600 relative flex flex-wrap py-6 rounded shadow-md">
         <div class="lg:w-1/2 px-6">
-          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">Адрес</h2>
+          <h2 class="title-font font-semibold  text-green-500 tracking-widest text-xs">Адрес</h2>
           <p class="mt-1">{% get_setting 'ADDRESS' default='г. Ростов-на-Дону, улица Пушкина, дом №729 подъезд №2' %}</p>
         </div>
         <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
-          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">Электронная почта</h2>
-          <a class="text-indigo-500 leading-relaxed">{% get_setting 'EMAIL' default='protectedmanager@test.com' %}</a>
-          <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">Телефон</h2>
+          <h2 class="title-font font-semibold  text-green-500 tracking-widest text-xs">Электронная почта</h2>
+          <a class="text-white leading-relaxed">{% get_setting 'EMAIL' default='protectedmanager@test.com' %}</a>
+          <h2 class="title-font font-semibold  text-green-500 tracking-widest text-xs mt-4">Телефон</h2>
           <p class="leading-relaxed">{% get_setting 'PHONE' default='+7(999) 555-33-33' %}</p>
         </div>
       </div>
